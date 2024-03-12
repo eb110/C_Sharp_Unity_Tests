@@ -4,9 +4,13 @@ namespace CodeWars
 {
     public class Kata
     {
+        public static double[] Centroid(int[][]c) => 
+                new double[] {Math.Round(c.Select(x => x[0]).Average(), 2),
+                Math.Round(c.Select(x => x[1]).Average(), 2),
+                Math.Round(c.Select(x => x[2]).Average(), 2) };
+
         public static int StonePick(string[] arr) => Math.Min(arr.Select(x => x == "Cobblestone" ?  1 : 0).Sum() / 3, 
                 arr.Select(x => x == "Wood" ? 4 : x == "Sticks" ? 1 : 0).Sum() / 2);
-
         public static bool PossiblyPerfect(string[] key, string[] ans)
         {
             int check = ans.Where((x, i) => x != "_" && x == key[i]).Count();
