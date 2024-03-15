@@ -4,9 +4,15 @@ namespace CodeWars
 {
     public class Kata
     {
+        public static int[] ArrayCenter(int[] arr )
+        {
+            var avg = arr.Average();
+            var min = arr.Min();
+            return arr.Where(x => Math.Abs(x - avg) < min).ToArray();
+        }
+
         public static int ShortestTime(int n, int m, int[] speeds) =>
             Math.Min((n - 1) * speeds[3], Math.Abs(m - n) * speeds[0] + speeds[1] * 2 + speeds[2] + (n - 1) * speeds[0]);
-
         public static bool Gaslighting(string shirtWord, string yourWord, char[] friendsLetters) =>
             shirtWord.Where((x, i) => yourWord[i] != x && (friendsLetters.Contains(x) || friendsLetters.Contains(yourWord[i]))).Count() > 0; 
         public static double[] Centroid(int[][]c) => 
