@@ -33,7 +33,7 @@ namespace CodeWars.Tests
             var arrs = GenerateArrs();
             foreach (var arr in arrs)
             {
-                var actual = Kata.Centroid(arr);
+                var actual = Kata.Centroid(arr.Select(x => x.ToArray()).ToArray());
                 var expected = new double[] {Math.Round(arr.Select(x => x[0]).Average(), 2),
                 Math.Round(arr.Select(x => x[1]).Average(), 2),
                 Math.Round(arr.Select(x => x[2]).Average(), 2) }; ;

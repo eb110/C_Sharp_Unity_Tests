@@ -19,7 +19,7 @@ namespace CodeWars.Tests
             var lists = AddRandomLists();
             foreach(var list in lists)
             {
-                var actual = Kata.ReverseMiddle(list);
+                var actual = Kata.ReverseMiddle(list.Select(x => x).ToList());
                 var expected = list.Skip(list.Count() / 2 - 1).Take(list.Count() % 2 == 0 ? 2 : 3).Reverse().ToList();
                 Assert.That(actual, Is.EqualTo(expected), "List => " + String.Join(", ", list.Select(x => x)));
             }

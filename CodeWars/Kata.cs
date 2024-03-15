@@ -4,11 +4,15 @@ namespace CodeWars
 {
     public class Kata
     {
+        public static int ShortestTime(int n, int m, int[] speeds) =>
+            Math.Min((n - 1) * speeds[3], Math.Abs(m - n) * speeds[0] + speeds[1] * 2 + speeds[2] + (n - 1) * speeds[0]);
+
+        public static bool Gaslighting(string shirtWord, string yourWord, char[] friendsLetters) =>
+            shirtWord.Where((x, i) => yourWord[i] != x && (friendsLetters.Contains(x) || friendsLetters.Contains(yourWord[i]))).Count() > 0; 
         public static double[] Centroid(int[][]c) => 
                 new double[] {Math.Round(c.Select(x => x[0]).Average(), 2),
                 Math.Round(c.Select(x => x[1]).Average(), 2),
                 Math.Round(c.Select(x => x[2]).Average(), 2) };
-
         public static int StonePick(string[] arr) => Math.Min(arr.Select(x => x == "Cobblestone" ?  1 : 0).Sum() / 3, 
                 arr.Select(x => x == "Wood" ? 4 : x == "Sticks" ? 1 : 0).Sum() / 2);
         public static bool PossiblyPerfect(string[] key, string[] ans)
