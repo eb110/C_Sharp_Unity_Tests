@@ -1,16 +1,29 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Numerics;
+using System.Text.RegularExpressions;
 
 namespace CodeWars
 {
     public class Kata
     {
+        public static bool BulbMaze(string maze) => 
+            maze.Where((x, i) => i % 2 == 0 && x == 'o' || i % 2 != 0 && x == 'x').Count() == 0;
+
+        public static List<List<BigInteger>> Make2dList(BigInteger head, int row, int col)
+        {
+            var res = new List<List<BigInteger>>();
+            for(int i = 0; i < row; i++)
+            {
+                res.Add(new List<BigInteger>());
+                for (int j = 0; j < col; j++) res[i].Add(head++);
+            }
+            return res;
+        }
         public static int[] ArrayCenter(int[] arr )
         {
             var avg = arr.Average();
             var min = arr.Min();
             return arr.Where(x => Math.Abs(x - avg) < min).ToArray();
         }
-
         public static int ShortestTime(int n, int m, int[] speeds) =>
             Math.Min((n - 1) * speeds[3], Math.Abs(m - n) * speeds[0] + speeds[1] * 2 + speeds[2] + (n - 1) * speeds[0]);
         public static bool Gaslighting(string shirtWord, string yourWord, char[] friendsLetters) =>
