@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace CodeWars.Tests
@@ -36,18 +37,18 @@ namespace CodeWars.Tests
             {
                 int wordLength = rnd.Next(1, 11);
                 var index = rnd.Next(0, 2) == 0 ? rnd.Next(0, wordLength) : -1;
-                string word = "";
+                StringBuilder word = new StringBuilder(wordLength);
                 for(int j = 0; j < wordLength; j++)
                 {
-                    char letter = (char)rnd.Next(97, 123);
-                    word += letter;
+                    char letter = (char)rnd.Next('a', 'z' + 1);
+                    word.Append(letter);
                     if (index == j)
                     {
-                        word += letter;
+                        word.Append(letter);
                         j++;
                     }
                 }
-                arr[i] = word;
+                arr[i] = word.ToString();
             }
             return arr;
         }
